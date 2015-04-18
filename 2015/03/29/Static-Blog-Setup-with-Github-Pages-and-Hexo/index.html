@@ -18,33 +18,13 @@
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
 
 
-    <meta name="description" content="The blog of LiaoYifan" />
+    <meta name="description" content="Liao Yifan's blog" />
 
 
 
+	<meta name="keywords" content="hexo,tutorial," />
 
-    <meta name="keywords" content="Hexo,next" />
-
-
-
-
-
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.0" />
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?50c15455e37f70aea674ff4a663eef27";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-  <title> Hello World // Liao Yifan's Strive </title>
+  <title> Static Blog Setup with Github Pages and Hexo // Liao Yifan's Strive </title>
 </head>
 
 <body>
@@ -133,7 +113,7 @@
           
           
             
-              Hello World
+              Static Blog Setup with Github Pages and Hexo
             
           
         </h1>
@@ -148,14 +128,25 @@
 
         
           
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/Others/">Others</a>
+
+                
+                
+
+              
+            </span>
+          
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/03/29/hello-world/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/29/hello-world/"></span>
+            <a href="/2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/"></span>
             </a>
           </span>
           
@@ -170,9 +161,44 @@
         
 
         
-          <p>Welcome to my blog.</p>
-<p>Sorry, the blog is under construction currently.</p>
-<p>More will be upcoming soon.</p>
+          <h2 id="Foreword">Foreword</h2><p>In this tutorial you will set up a static blog with Github pages and Hexo.</p>
+<h3 id="Why_Github_Pages?">Why Github Pages?</h3><ul>
+<li>Stable</li>
+<li>Simple</li>
+<li>Popular</li>
+<li>Why not?</li>
+</ul>
+<h3 id="What_is_Hexo?">What is Hexo?</h3><p><a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Hexo</a> is a simple, powerful blog framework powered by Node.js.</p>
+<h3 id="Why_Hexo?">Why Hexo?</h3><p>In my view, great content is the soul of blog. So I choose a simple way like Hexo to set up my blog, and share my experience with you.</p>
+<h2 id="Start_to_set_up_your_blog">Start to set up your blog</h2><h3 id="Install_Git_and_Node-js">Install <a href="http://git-scm.com/" target="_blank" rel="external">Git</a> and <a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a></h3><p>If you use Mac, you just need:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew update  </span><br><span class="line"><span class="variable">$ </span>brew install git  </span><br><span class="line"><span class="variable">$ </span>brew install node</span><br></pre></td></tr></table></figure>
+<h3 id="Install_and_init_Hexo">Install and init <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Hexo</a></h3><h4 id="Install">Install</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure>
+<h4 id="Init">Init</h4><p>Create a new hexo project in a folder:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo init &lt;your_project_name&gt;</span><br><span class="line"><span class="variable">$ </span>cd &lt;your_project_name&gt;</span><br><span class="line"><span class="variable">$ </span>npm install</span><br></pre></td></tr></table></figure>
+<p>Check it with:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo clean  </span><br><span class="line"><span class="variable">$ </span>hexo generate  </span><br><span class="line"><span class="variable">$ </span>hexo server</span><br></pre></td></tr></table></figure>
+<p>See the effect in your browser with the url of <strong>‘localhost:4000’</strong></p>
+<a id="more"></a>
+<h3 id="Deploy_GitHub_Pages">Deploy GitHub Pages</h3><h4 id="Create_a_new_repo">Create a new repo</h4><p>You can choose:</p>
+<ul>
+<li>your_user_name.github.com: one user can have only one this repo, and you can push to the <strong>‘master’</strong> branch.</li>
+<li>Project repo, you should push to the gh-pages branch.</li>
+</ul>
+<h3 id="Configure_your_Hexo">Configure your Hexo</h3><h4 id="Use_your_own_domain">Use your own domain</h4><p>If you want to use your own domain, you should create a file named <strong>‘CNAME’</strong>. And put it in <strong>hexo folder/source</strong> root. Or just use default.</p>
+<h4 id="Giving_the_website_a_name,_blog_author,_email,_etc">Giving the website a name, blog author, email, etc</h4><p>Edit the site section of the <strong>hexo folder/_config.yml</strong> file:</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Site</span></span><br><span class="line">title: Liao Yifan<span class="comment">'s Strive</span></span><br><span class="line">subtitle:       —— Talk <span class="keyword">is</span> cheap, just <span class="keyword">do</span> it!</span><br><span class="line">description: Liao Yifan<span class="comment">'s blog</span></span><br><span class="line">author: Liao Yifan</span><br><span class="line">language: <span class="keyword">default</span></span><br></pre></td></tr></table></figure>
+<h4 id="Configuring_a_public_web_address_(URL)">Configuring a public web address (URL)</h4><p>Edit the URL section:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="symbol">url:</span> <span class="symbol">http:</span>/<span class="regexp">/saintdan.github.io/</span></span><br><span class="line"><span class="symbol">root:</span> /</span><br><span class="line"><span class="symbol">permalink:</span> <span class="symbol">:year/</span><span class="symbol">:month/</span><span class="symbol">:day/</span><span class="symbol">:title/</span></span><br></pre></td></tr></table></figure>
+<h4 id="Enabling_comments">Enabling comments</h4><p>Hexo blog sites use <a href="https://disqus.com/" target="_blank" rel="external">Disqus</a> for managing comments. Disqus is a common service use to manage comments for lots of different blog platforms.</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Disqus</span></span><br><span class="line"><span class="label">disqus_shortname:</span> &lt;your_disqus_shortname&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Configure_deploy_information">Configure deploy information</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="label">  type:</span> git</span><br><span class="line"><span class="label">  repository:</span> &lt;your_repository&gt; (e.g.:git<span class="annotation">@github</span>.<span class="string">com:</span>saintdan/saintdan.github.io.git)</span><br><span class="line"><span class="label">  branch:</span> master</span><br></pre></td></tr></table></figure>
+<p><strong>you can use other configuration as their default, or edit as you wish, it’s upto you.</strong></p>
+<h4 id="Use_theme">Use theme</h4><p>If you don’t want to create your own hexo theme, you can choose the existing <a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">themes</a>.<br>BTW, I used <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">NexT</a> theme. “Less is more”. :P<br>Modify hexo root file <strong>‘config.yml’</strong>:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">theme</span>: <span class="string">&lt;your_theme_name&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Deploy_Hexo">Deploy Hexo</h3><p>You can use:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo clean</span><br><span class="line"><span class="variable">$ </span>hexo generate</span><br><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
+<p>to deploy it.<br>See the effect in your browser with your blog URL.  </p>
+<p><strong>Thanks for reading and happy coding.</strong></p>
 
         
       </div>
@@ -180,6 +206,18 @@
 
     
       <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/hexo/">
+                #hexo
+              </a>
+            
+              <a href="/tags/tutorial/">
+                #tutorial
+              </a>
+            
+          </div>
         
 
         
@@ -244,10 +282,10 @@
 
     <div class="site-overview">
       <div class="site-author motion-element">
-        <img class="site-author-image" src="/images/default_avatar.jpg" alt="LiaoYifan" />
-        <p class="site-author-name">LiaoYifan</p>
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Liao Yifan" />
+        <p class="site-author-name">Liao Yifan</p>
       </div>
-      <p class="site-description motion-element">The blog of LiaoYifan</p>
+      <p class="site-description motion-element">Liao Yifan's blog</p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
           <span class="site-state-item-count">3</span>
@@ -304,7 +342,7 @@
         <div class="post-toc">
           
           
-            <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreword"><span class="nav-number">1.</span> <span class="nav-text">Foreword</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why_Github_Pages?"><span class="nav-number">1.1.</span> <span class="nav-text">Why Github Pages?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What_is_Hexo?"><span class="nav-number">1.2.</span> <span class="nav-text">What is Hexo?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why_Hexo?"><span class="nav-number">1.3.</span> <span class="nav-text">Why Hexo?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start_to_set_up_your_blog"><span class="nav-number">2.</span> <span class="nav-text">Start to set up your blog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install_Git_and_Node-js"><span class="nav-number">2.1.</span> <span class="nav-text">Install Git and Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install_and_init_Hexo"><span class="nav-number">2.2.</span> <span class="nav-text">Install and init Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install"><span class="nav-number">2.2.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Init"><span class="nav-number">2.2.2.</span> <span class="nav-text">Init</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_GitHub_Pages"><span class="nav-number">2.3.</span> <span class="nav-text">Deploy GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create_a_new_repo"><span class="nav-number">2.3.1.</span> <span class="nav-text">Create a new repo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure_your_Hexo"><span class="nav-number">2.4.</span> <span class="nav-text">Configure your Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Use_your_own_domain"><span class="nav-number">2.4.1.</span> <span class="nav-text">Use your own domain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Giving_the_website_a_name,_blog_author,_email,_etc"><span class="nav-number">2.4.2.</span> <span class="nav-text">Giving the website a name, blog author, email, etc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuring_a_public_web_address_(URL)"><span class="nav-number">2.4.3.</span> <span class="nav-text">Configuring a public web address (URL)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enabling_comments"><span class="nav-number">2.4.4.</span> <span class="nav-text">Enabling comments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configure_deploy_information"><span class="nav-number">2.4.5.</span> <span class="nav-text">Configure deploy information</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use_theme"><span class="nav-number">2.4.6.</span> <span class="nav-text">Use theme</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_Hexo"><span class="nav-number">2.5.</span> <span class="nav-text">Deploy Hexo</span></a></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -324,7 +362,7 @@
   
   &copy; &nbsp; 
   2015
-  <span class="author">LiaoYifan</span>
+  <span class="author">Liao Yifan</span>
 </div>
 
 
@@ -845,8 +883,8 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'liaoyifansstrive';
-      var disqus_identifier = '2015/03/29/hello-world/';
-      var disqus_url = 'http://saintdan.github.io/2015/03/29/hello-world/';
+      var disqus_identifier = '2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/';
+      var disqus_url = 'http://saintdan.github.io/2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/';
 
       (function(){
         var dsq = document.createElement('script');

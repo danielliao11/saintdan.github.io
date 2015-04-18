@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
 
 
-    <meta name="description" content="The blog of LiaoYifan" />
+    <meta name="description" content="Liao Yifan's blog" />
 
 
 
@@ -136,8 +136,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/04/16/Publish-your-jar-file-to-Maven-Central-with-Gradle/">
-                Publish your jar file to Maven Central with Gradle
+              <a class="post-title-link" href="/2015/04/16/Publish-Your-Jar-File-to-Maven-Central-with-Gradle/">
+                Publish Your Jar File to Maven Central with Gradle
               </a>
             
           
@@ -156,7 +156,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; In
               
-                <a href="/categories/English/">English</a>
+                <a href="/categories/Java/">Java</a>
 
                 
                 
@@ -164,7 +164,7 @@
                 
 
               
-                <a href="/categories/English/Java/">Java</a>
+                <a href="/categories/Java/Gradle/">Gradle</a>
 
                 
                 
@@ -172,7 +172,7 @@
                 
 
               
-                <a href="/categories/English/Java/Gradle/">Gradle</a>
+                <a href="/categories/Java/Gradle/Maven/">Maven</a>
 
                 
                 
@@ -186,8 +186,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/04/16/Publish-your-jar-file-to-Maven-Central-with-Gradle/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/16/Publish-your-jar-file-to-Maven-Central-with-Gradle/"></span>
+            <a href="/2015/04/16/Publish-Your-Jar-File-to-Maven-Central-with-Gradle/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/16/Publish-Your-Jar-File-to-Maven-Central-with-Gradle/"></span>
             </a>
           </span>
           
@@ -203,7 +203,7 @@
 
         
           
-            <p>This is a guide to help you to publish your jar file to Maven Central with Gradle.</p>
+            <p>This is a tutorial to help you to publish your jar file to Maven Central with Gradle.</p>
 <p><strong>First of all, we need:</strong></p>
 <ul>
 <li>Sigh up for Sonatype.  </li>
@@ -220,7 +220,7 @@
 <li>When you create your project, pay more attenton to <strong>groupId</strong>. It is very important.<br><strong>If you don’t own a domain, you can choose a groupId like “com.github.your_account” which reflects your project host.</strong> </li>
 <li>You can’t use your JIRA ticket immediately.Sonatype have to prepare repository and normally it takes 1-2 business days.</li>
 </ul>
-<h2 id="Generate_your_own_gpg_key">Generate your own gpg key</h2><p>Before you publish your <strong>release</strong> version of jar file, you need to sign it with GnuPG.<br><strong>(If you interest in GPG, you can see my another blog: )</strong></p>
+<h2 id="Generate_your_own_gpg_key">Generate your own gpg key</h2><p>Before you publish your <strong>release</strong> version of jar file, you need to sign it with GnuPG.</p>
 <h3 id="Check_it_with:">Check it with:</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg <span class="comment">--version</span></span><br></pre></td></tr></table></figure>
 <h3 id="Generate_the_key_with:">Generate the key with:</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg <span class="comment">--gen-key</span></span><br></pre></td></tr></table></figure>
 <p>You will then be prompted back with the following:</p>
@@ -235,25 +235,13 @@
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --<span class="keyword">list</span>-<span class="built_in">keys</span></span><br></pre></td></tr></table></figure>
 <p>in terminal to list them all.</p>
 <h3 id="Upload_your_public_key_to_key_server:">Upload your public key to key server:</h3><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">gpg</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">keyserver</span> <span class="comment">hkp://pool</span><span class="string">.</span><span class="comment">sks</span><span class="literal">-</span><span class="comment">keyservers</span><span class="string">.</span><span class="comment">net</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">send</span><span class="literal">-</span><span class="comment">keys</span> &lt;<span class="comment">your_key_ID</span>&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Gradle_Script">Gradle Script</h2><p>I used <a href="https://plus.google.com/+ChrisBanes/posts?partnerid=ogpy0" target="_blank" rel="external">Chris Banes</a>‘s <a href="https://github.com/chrisbanes/gradle-mvn-push" target="_blank" rel="external">gradle-mvn-push</a> and modify it for jar to my <a href="https://github.com/saintdan/gradle_mvn_push_for_jar" target="_blank" rel="external">gradle_mvn_push_for_jar</a>. THX Chris!</p>
-<h3 id="Create_project_root_maven-push-gradle">Create project root maven-push.gradle</h3><p>Copy following with no modification:</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'idea'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'signing'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> isReleaseBuild() &#123;</span><br><span class="line">    <span class="keyword">return</span> VERSION_NAME.contains(<span class="string">"SNAPSHOT"</span>) == <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> getReleaseRepositoryUrl() &#123;</span><br><span class="line">    <span class="keyword">return</span> hasProperty(<span class="string">'RELEASE_REPOSITORY_URL'</span>) ? RELEASE_REPOSITORY_URL</span><br><span class="line">            : <span class="string">"https://oss.sonatype.org/service/local/staging/deploy/maven2/"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> getSnapshotRepositoryUrl() &#123;</span><br><span class="line">    <span class="keyword">return</span> hasProperty(<span class="string">'SNAPSHOT_REPOSITORY_URL'</span>) ? SNAPSHOT_REPOSITORY_URL</span><br><span class="line">            : <span class="string">"https://oss.sonatype.org/content/repositories/snapshots/"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> getRepositoryUsername() &#123;</span><br><span class="line">    <span class="keyword">return</span> hasProperty(<span class="string">'NEXUS_USERNAME'</span>) ? NEXUS_USERNAME : <span class="string">""</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> getRepositoryPassword() &#123;</span><br><span class="line">    <span class="keyword">return</span> hasProperty(<span class="string">'NEXUS_PASSWORD'</span>) ? NEXUS_PASSWORD : <span class="string">""</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uploadArchives &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            beforeDeployment &#123; MavenDeployment deployment -&gt; signing.signPom(deployment) &#125;</span><br><span class="line"></span><br><span class="line">            pom.groupId = GROUP</span><br><span class="line">            pom.artifactId = POM_ARTIFACT_ID</span><br><span class="line">            pom.version = VERSION_NAME</span><br><span class="line"></span><br><span class="line">            repository(<span class="string">url:</span> getReleaseRepositoryUrl()) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> getRepositoryUsername(), <span class="string">password:</span> getRepositoryPassword())</span><br><span class="line">            &#125;</span><br><span class="line">            snapshotRepository(<span class="string">url:</span> getSnapshotRepositoryUrl()) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> getRepositoryUsername(), <span class="string">password:</span> getRepositoryPassword())</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pom.project &#123;</span><br><span class="line">                name POM_NAME</span><br><span class="line">                packaging POM_PACKAGING</span><br><span class="line">                description POM_DESCRIPTION</span><br><span class="line">                url POM_URL</span><br><span class="line"></span><br><span class="line">                scm &#123;</span><br><span class="line">                    url POM_SCM_URL</span><br><span class="line">                    connection POM_SCM_CONNECTION</span><br><span class="line">                    developerConnection POM_SCM_DEV_CONNECTION</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                licenses &#123;</span><br><span class="line">                    license &#123;</span><br><span class="line">                        name POM_LICENCE_NAME</span><br><span class="line">                        url POM_LICENCE_URL</span><br><span class="line">                        distribution POM_LICENCE_DIST</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                developers &#123;</span><br><span class="line">                    developer &#123;</span><br><span class="line">                        id POM_DEVELOPER_ID</span><br><span class="line">                        name POM_DEVELOPER_NAME</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task javadocJar(<span class="string">type:</span> Jar, <span class="string">dependsOn:</span> javadoc) &#123;</span><br><span class="line">    classifier = <span class="string">'javadoc'</span></span><br><span class="line">    from <span class="string">'build/docs/javadoc'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task sourcesJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">    classifier = <span class="string">'sources'</span></span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">javadoc&#123;</span><br><span class="line">    failOnError = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives jar</span><br><span class="line">    archives javadocJar</span><br><span class="line">    archives sourcesJar</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">signing &#123;</span><br><span class="line">    sign configurations.archives</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>NOTICE:</strong><br>About javadoc, add</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javadoc&#123;</span><br><span class="line">    <span class="variable">failOnError =</span> <span class="constant">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>to fix javadoc error.</p>
-<h3 id="Create_project_root_gradle-properties">Create project root gradle.properties</h3><p>Copy following, and input your information:</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">VERSION_NAME</span> = &lt;your version name&gt;</span><br><span class="line"><span class="constant">GROUP</span> = &lt;your <span class="keyword">group</span>&gt;</span><br><span class="line"><span class="constant"></span><br><span class="line">POM_DESCRIPTION</span> = &lt;your description&gt;</span><br><span class="line"><span class="constant">POM_URL</span> = &lt;likes https:<span class="comment">//github.com/saintdan/java_util&gt;</span></span><br><span class="line"><span class="constant">POM_SCM_URL</span> = &lt;likes scm:github.com/saintdan/java_util.git&gt;</span><br><span class="line"><span class="constant">POM_SCM_CONNECTION</span> = &lt;likes scm:github.com/saintdan/java_util.git&gt;</span><br><span class="line"><span class="constant">POM_SCM_DEV_CONNECTION</span> = &lt;likes github.com/saintdan/java_util.git&gt;</span><br><span class="line"><span class="constant">POM_LICENCE_NAME</span> = The Apache Software License, Version <span class="number">2.0</span></span><br><span class="line"><span class="constant">POM_LICENCE_URL</span> = http:<span class="comment">//www.apache.org/licenses/LICENSE-2.0.txt</span></span><br><span class="line"><span class="constant">POM_LICENCE_DIST</span> = repo</span><br><span class="line"><span class="constant">POM_DEVELOPER_ID</span> = &lt;your id&gt;</span><br><span class="line"><span class="constant">POM_DEVELOPER_NAME</span> = &lt;your name&gt;</span><br><span class="line"><span class="constant">POM_NAME</span> = &lt;your project name&gt;</span><br><span class="line"><span class="constant">POM_ARTIFACT_ID</span> = &lt;your artifact id&gt;</span><br><span class="line"><span class="constant">POM_PACKAGING</span> = jar</span><br><span class="line"><span class="constant"></span><br><span class="line">SNAPSHOT_REPOSITORY_URL</span>=https:<span class="comment">//oss.sonatype.org/content/repositories/snapshots</span></span><br><span class="line"><span class="constant">RELEASE_REPOSITORY_URL</span>=https:<span class="comment">//oss.sonatype.org/service/local/staging/deploy/maven2</span></span><br></pre></td></tr></table></figure>
-<p><strong>NOTICE:</strong><br>VERSION_NAME with -SNAPSHOT suffix means what published is snapshot.  </p>
-<h3 id="Modify_project_root_build-gradle">Modify project root build.gradle</h3><p>Add <strong>apply from: ‘maven-push.gradle’</strong> at the end.</p>
-<h3 id="Update_your_home_gradle-properties-">Update your home gradle.properties.</h3><p>This will include the username and password to upload to the Maven server and so that they are kept local on your machine. The location defaults to <strong>USER_HOME/.gradle/gradle.properties</strong></p>
-<p>It may also include your signing key id, password, and secret key ring file (for signed uploads). Signing is only necessary if you’re putting release builds of your project on maven central.</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NEXUS_USERNAME = &lt;your username&gt;</span><br><span class="line">NEXUS_PASSWORD = &lt;your password&gt;</span><br><span class="line"></span><br><span class="line">signing<span class="class">.keyId</span> = &lt;your gpg keyId&gt;</span><br><span class="line">signing<span class="class">.password</span> = &lt;your gpg purchase&gt;</span><br><span class="line">signing<span class="class">.secretKeyRingFile</span> = ~/.gnupg/secring.gpg</span><br></pre></td></tr></table></figure>
-<h2 id="Pulish_your_jar_to_Sonatype">Pulish your jar to Sonatype</h2><p>cd to your project root and:</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gradle</span> uploadArchives</span><br></pre></td></tr></table></figure>
-<p>Wait for the success notification.<br>Your library will be built, signed and pushed to the sonatype repo. Please make sure that <strong>signing</strong> stage was not skipped. It is skipped if your library name is ending with <strong>“-SNAPSHOT”</strong>, but for releases signing is mandatory.</p>
-<h2 id="Offcial_release">Offcial release</h2><p>Open <a href="https://oss.sonatype.org" target="_blank" rel="external">Sonatype Nexus Professional</a> and log in, click the Staging Repositories button to open the list and search your projet.<br>Select it, and press <strong>Close</strong> button. Closing a library actually means that you’re ready to release it. Another option is <strong>Drop</strong> button, which means removing it from the list.<br>If closing went fine, you should see a <strong>Release</strong> button active. Press it and then get back to JIRA and post a comment there that you promoted you library.<br>After that you should get a response from Sonatype that your library will be available in ~10 minutes and it will be synced with the Maven Central in the next few hours.<br><strong>NOTICE:</strong><br>Remeber to comment on the ticket which holds this jar when you promoted your first release.  </p>
-<p><strong>Thanks for reading.</strong></p>
-
+<h2 id="Gradle_Script">Gradle Script</h2><p>I used <a href="https://plus.google.com/+ChrisBanes/posts?partnerid=ogpy0">Chris Banes</a>‘s <a href="https://github.com/chrisbanes/gradle-mvn-push">gradle-mvn-push</a> and modify it for jar to my <a href="https://github.com/saintdan/gradle_mvn_push_for_jar">gradle_mvn_push_for_jar</a>. THX Chris!</p>
+<h3 id="Create_project_root_maven-push-gradle">Create project root maven-push.gradle</h3><p>You can download my <a href="https://github.com/saintdan/gradle_mvn_push_for_jar">gradle_mvn_push_for_jar</a> or copy following with no modification:</p>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2015/04/16/Publish-Your-Jar-File-to-Maven-Central-with-Gradle/#more">
+                Read more &raquo;
+              </a>
+            </div>
           
         
       </div>
@@ -264,16 +252,12 @@
         
           <div class="post-tags">
             
-              <a href="/tags/IDEA/">
-                #IDEA
+              <a href="/tags/Maven-Central/">
+                #Maven Central
               </a>
             
-              <a href="/tags/MavenRepository/">
-                #MavenRepository
-              </a>
-            
-              <a href="/tags/upload/">
-                #upload
+              <a href="/tags/tutorial/">
+                #tutorial
               </a>
             
           </div>
@@ -410,8 +394,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/03/29/hello-world/">
-                Hello World
+              <a class="post-title-link" href="/2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/">
+                Static Blog Setup with Github Pages and Hexo
               </a>
             
           
@@ -427,14 +411,25 @@
 
         
           
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/Others/">Others</a>
+
+                
+                
+
+              
+            </span>
+          
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/03/29/hello-world/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/29/hello-world/"></span>
+            <a href="/2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/"></span>
             </a>
           </span>
           
@@ -450,10 +445,28 @@
 
         
           
-            <p>Welcome to my blog.</p>
-<p>Sorry, the blog is under construction currently.</p>
-<p>More will be upcoming soon.</p>
-
+            <h2 id="Foreword">Foreword</h2><p>In this tutorial you will set up a static blog with Github pages and Hexo.</p>
+<h3 id="Why_Github_Pages?">Why Github Pages?</h3><ul>
+<li>Stable</li>
+<li>Simple</li>
+<li>Popular</li>
+<li>Why not?</li>
+</ul>
+<h3 id="What_is_Hexo?">What is Hexo?</h3><p><a href="https://github.com/hexojs/hexo">Hexo</a> is a simple, powerful blog framework powered by Node.js.</p>
+<h3 id="Why_Hexo?">Why Hexo?</h3><p>In my view, great content is the soul of blog. So I choose a simple way like Hexo to set up my blog, and share my experience with you.</p>
+<h2 id="Start_to_set_up_your_blog">Start to set up your blog</h2><h3 id="Install_Git_and_Node-js">Install <a href="http://git-scm.com/">Git</a> and <a href="https://nodejs.org/">Node.js</a></h3><p>If you use Mac, you just need:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew update  </span><br><span class="line"><span class="variable">$ </span>brew install git  </span><br><span class="line"><span class="variable">$ </span>brew install node</span><br></pre></td></tr></table></figure>
+<h3 id="Install_and_init_Hexo">Install and init <a href="https://github.com/hexojs/hexo">Hexo</a></h3><h4 id="Install">Install</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure>
+<h4 id="Init">Init</h4><p>Create a new hexo project in a folder:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo init &lt;your_project_name&gt;</span><br><span class="line"><span class="variable">$ </span>cd &lt;your_project_name&gt;</span><br><span class="line"><span class="variable">$ </span>npm install</span><br></pre></td></tr></table></figure>
+<p>Check it with:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo clean  </span><br><span class="line"><span class="variable">$ </span>hexo generate  </span><br><span class="line"><span class="variable">$ </span>hexo server</span><br></pre></td></tr></table></figure>
+<p>See the effect in your browser with the url of <strong>‘localhost:4000’</strong></p>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2015/03/29/Static-Blog-Setup-with-Github-Pages-and-Hexo/#more">
+                Read more &raquo;
+              </a>
+            </div>
           
         
       </div>
@@ -461,6 +474,18 @@
 
     
       <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/hexo/">
+                #hexo
+              </a>
+            
+              <a href="/tags/tutorial/">
+                #tutorial
+              </a>
+            
+          </div>
         
 
         
@@ -497,10 +522,10 @@
 
     <div class="site-overview">
       <div class="site-author motion-element">
-        <img class="site-author-image" src="/images/default_avatar.jpg" alt="LiaoYifan" />
-        <p class="site-author-name">LiaoYifan</p>
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="Liao Yifan" />
+        <p class="site-author-name">Liao Yifan</p>
       </div>
-      <p class="site-description motion-element">The blog of LiaoYifan</p>
+      <p class="site-description motion-element">Liao Yifan's blog</p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
           <span class="site-state-item-count">3</span>
@@ -566,7 +591,7 @@
   
   &copy; &nbsp; 
   2015
-  <span class="author">LiaoYifan</span>
+  <span class="author">Liao Yifan</span>
 </div>
 
 
