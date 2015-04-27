@@ -22,9 +22,9 @@
 
 
 
-	<meta name="keywords" content="setup," />
+	<meta name="keywords" content="tutorial," />
 
-  <title> Rock your Mac // Liao Yifan's Strive </title>
+  <title> Set Up Development Environment On a New Mac // Liao Yifan's Strive </title>
 </head>
 
 <body>
@@ -113,7 +113,7 @@
           
           
             
-              Rock your Mac
+              Set Up Development Environment On a New Mac
             
           
         </h1>
@@ -131,23 +131,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; In
               
-                <a href="/categories/English/">English</a>
-
-                
-                
-                  , 
-                
-
-              
-                <a href="/categories/English/Mac/">Mac</a>
-
-                
-                
-                  , 
-                
-
-              
-                <a href="/categories/English/Mac/Rock-your-life/">Rock your life</a>
+                <a href="/categories/Mac/">Mac</a>
 
                 
                 
@@ -161,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/03/30/Rock-your-Mac/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/30/Rock-your-Mac/"></span>
+            <a href="/2015/03/30/Set-Up-Development–Environment–On-a-New-Mac/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/03/30/Set-Up-Development–Environment–On-a-New-Mac/"></span>
             </a>
           </span>
           
@@ -177,7 +161,84 @@
         
 
         
-          
+          <p>In this tutorial you will set up the development environment on a new Macbook for some major languages like <a href="https://www.python.org/" target="_blank" rel="external">Python</a>, <a href="https://www.ruby-lang.org/en/" target="_blank" rel="external">Ruby</a>, <a href="http://www.oracle.com/technetwork/java/index.html" target="_blank" rel="external">Java</a> and <a href="https://nodejs.org/" target="_blank" rel="external">Node</a> environments. Even if you don’t program in all four, it is good to have them as many command-line tools use one of them.</p>
+<h1 id="System_Update">System Update</h1><p>First of all, update your system. For that: <strong>Apple Icon -&gt; About This Mac -&gt; Software Update</strong></p>
+<h1 id="System_Preferences">System Preferences</h1><p>In <strong>Apple Icon -&gt; System Preferences:</strong></p>
+<ul>
+<li>Trackpad -&gt; <ol>
+<li>Tap to click</li>
+<li>Secondary click -&gt; Click in bottom right corner</li>
+</ol>
+</li>
+<li>Keyboard -&gt;<ol>
+<li>Key Repeat -&gt; Fast(all the way to the right)</li>
+<li>Delay Until Repeat -&gt; Short(all the way to the right)</li>
+</ol>
+</li>
+<li>Dock -&gt; Automatically hide and show the Dock, and make the size of Icons small</li>
+</ul>
+<p>In Battery Icon -&gt; Show Percentage</p>
+<h1 id="Homebrew">Homebrew</h1><p>The most popular package manager for OS X is <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>.</p>
+<h2 id="Install">Install</h2><p>An important dependency before Homebrew can work is the <strong>Command Line Tools</strong> for Xcode. These include compilers that will allow you to build things from source.</p>
+<p>If you’re Iphone or Mac apps developer, you can install <a href="https://developer.apple.com/xcode/" target="_blank" rel="external">Xcode</a> from the <strong>App Store</strong> or the <strong>Apple developer website</strong>.</p>
+<p>For installing <strong>Xcode command line tools</strong> run the command in terminal:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-<span class="built_in">select</span> <span class="comment">--install</span></span><br></pre></td></tr></table></figure>
+<p>If you don’t need the <strong>Xcode</strong> which weights something like 5GB+, and your OS X is 10.9 or newer. Just run the command in case 1. </p>
+<p>If you don’t need the <strong>Xcode</strong> and your OS X is 10.8 or older, go to <a href="http://developer.apple.com/downloads" target="_blank" rel="external">Apple developer website</a>, sign in with your Apple ID to search and download the <strong>Xcode command line tools</strong>.</p>
+<p>Finally, we can install Homebrew.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>Add <strong>‘/usr/local/bin’</strong> to your <strong>$PATH</strong> environment variable:</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">echo</span> 'export <span class="built_in">PATH</span>="/usr/local/bin:$<span class="built_in">PATH</span>"' &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>Run the following command to make sure everything works:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew doctor</span><br></pre></td></tr></table></figure>
+<h2 id="Usage">Usage</h2><p>To search a package:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew search <span class="tag">&lt;<span class="title">formula</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To install a package:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install <span class="tag">&lt;<span class="title">formula</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To see infomation of a package:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew info <span class="tag">&lt;<span class="title">formula</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To update Homebrew’s directory of fomula:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew update</span><br></pre></td></tr></table></figure>
+<p>To see if any of your packages need to be updated:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew outdated</span><br></pre></td></tr></table></figure>
+<p>To update all package:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew upgrade <span class="comment">--all</span></span><br></pre></td></tr></table></figure>
+<p>Homebrew keeps older versions of packages installed, in case you want to roll back. That rarely is necessary, so you can do some cleanup to get rid of those old versions:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew cleanup</span><br></pre></td></tr></table></figure>
+<p>To see what you have installed (with their version numbers):</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew <span class="type">list</span> <span class="comment">--versions</span></span><br></pre></td></tr></table></figure>
+<h2 id="Cask">Cask</h2><p>Your software is just one command away from being ready and raring to go.</p>
+<p>Forget all about babysitting the install process step by step, from website to cleanup.</p>
+<h3 id="Installation">Installation</h3><p>Install <a href="http://caskroom.io/" target="_blank" rel="external">Homebrew-cask</a> is really straight forward. We just need to add the cask tap and then install brew cask.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew <span class="keyword">install</span> caskroom/cask/brew-cask</span><br></pre></td></tr></table></figure>
+<h3 id="Usage-1">Usage</h3><p>Brew cask’s command just likes the brew’s command, you can use following command to see all the brew cask’s commands:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask <span class="comment">--help</span></span><br></pre></td></tr></table></figure>
+<h2 id="Homebrew_Services">Homebrew Services</h2><p>On most unixes, alongside the package manager, there’s a tool to start daemon services, install and uninstall them. There was no such thing with Homebrew until <a href="https://github.com/Homebrew/homebrew-services" target="_blank" rel="external">Homebrew services</a> command was added.</p>
+<h3 id="Installation-1">Installation</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew tap homebrew/services</span><br></pre></td></tr></table></figure>
+<h3 id="Usage-2">Usage</h3><p>Start service:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew services start <span class="tag">&lt;<span class="title">formula</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Stop service:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew services stop <span class="tag">&lt;<span class="title">formula</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To see all the loaded services:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew services <span class="type">list</span></span><br></pre></td></tr></table></figure>
+<p>Show all the commands:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew services <span class="comment">--help</span></span><br></pre></td></tr></table></figure>
+<h1 id="GFW">GFW</h1><p><a href="http://shadowsocks.org/en/index.html" target="_blank" rel="external">Shadowsocks</a> is a secure socks5 proxy.</p>
+<h2 id="Installation-2">Installation</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask <span class="keyword">install</span> shadowsocksx</span><br></pre></td></tr></table></figure>
+<h2 id="Server">Server</h2><p>You can use a free VPS or you can set up your own VPS like me.</p>
+<p>BTW, I used DigitalOcean and my referral link is <a href="https://www.digitalocean.com/?refcode=4b9b1935127e​" target="_blank" rel="external">https://www.digitalocean.com/?refcode=4b9b1935127e</a>. If you use my referral link to sign up, you will ONLY be charged $15( $10 will be reimbursed to you after you pay $25), and I’ll be rewarded as well.</p>
+<a id="more"></a>
+<p>Buy a server with <strong>Ubuntu</strong> I suggest. And add your ssh-key.</p>
+<h3 id="Log_in_Your_VPS">Log in Your VPS</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@<span class="tag">&lt;<span class="title">your_server_ip</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Install_Shadowsocks">Install Shadowsocks</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
+<h3 id="Configure_Shadowsocks">Configure Shadowsocks</h3><p>Create a file named <strong>‘shadowsocks.json’</strong> in <strong>/etc/</strong>.</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    “server”:”&lt;your_server_ip&gt;”,</span><br><span class="line">    “server_port”:&lt;your_port&gt;,</span><br><span class="line">    “local_address”: “<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>″,</span><br><span class="line">    “local_port”:<span class="number">1080</span>,</span><br><span class="line">    “password”:”&lt;your_password&gt;”,</span><br><span class="line">    “timeout”:<span class="number">300</span>,</span><br><span class="line">    “<span class="keyword">method</span>”:”aes-<span class="number">256</span>-cfb”,</span><br><span class="line">    “fast_open”: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Usage-3">Usage</h2><p><strong>Shadowsocksx Icon -&gt; Servers -&gt; Open Server Preference</strong></p>
+<p>Add a new server. Then turn the shadowsocks on.</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Address</span>: <span class="string">&lt;your_server_ip&gt; : &lt;your_port&gt;</span></span><br><span class="line"><span class="attribute">Encryption</span>: <span class="string">&lt;your_encryption&gt;</span></span><br><span class="line"><span class="attribute">Password</span>: <span class="string">&lt;your_password&gt;</span></span><br></pre></td></tr></table></figure>
+<p>OK, enjoy your VPS now.</p>
+<h1 id="iTerm2">iTerm2</h1><p>Let’s install a better terminal than the default one. Download and install <a href="http://www.iterm2.com" target="_blank" rel="external">iTerm2</a>.</p>
+
         
       </div>
     
@@ -187,8 +248,8 @@
         
           <div class="post-tags">
             
-              <a href="/tags/setup/">
-                #setup
+              <a href="/tags/tutorial/">
+                #tutorial
               </a>
             
           </div>
@@ -268,7 +329,7 @@
           <span class="site-state-item-name">posts</span>
         </div>
         <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">4</span>
+            <span class="site-state-item-count">3</span>
             <span class="site-state-item-name">tags</span>
         </div>
         <div class="site-state-item site-state-pages">
@@ -318,7 +379,7 @@
         <div class="post-toc">
           
           
-            <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#System_Update"><span class="nav-number">1.</span> <span class="nav-text">System Update</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#System_Preferences"><span class="nav-number">2.</span> <span class="nav-text">System Preferences</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Homebrew"><span class="nav-number">3.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">3.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">3.2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cask"><span class="nav-number">3.3.</span> <span class="nav-text">Cask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">3.3.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">Usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew_Services"><span class="nav-number">3.4.</span> <span class="nav-text">Homebrew Services</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage-2"><span class="nav-number">3.4.2.</span> <span class="nav-text">Usage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GFW"><span class="nav-number">4.</span> <span class="nav-text">GFW</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation-2"><span class="nav-number">4.1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server"><span class="nav-number">4.2.</span> <span class="nav-text">Server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Log_in_Your_VPS"><span class="nav-number">4.2.1.</span> <span class="nav-text">Log in Your VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install_Shadowsocks"><span class="nav-number">4.2.2.</span> <span class="nav-text">Install Shadowsocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure_Shadowsocks"><span class="nav-number">4.2.3.</span> <span class="nav-text">Configure Shadowsocks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage-3"><span class="nav-number">4.3.</span> <span class="nav-text">Usage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iTerm2"><span class="nav-number">5.</span> <span class="nav-text">iTerm2</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -859,8 +920,8 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'liaoyifansstrive';
-      var disqus_identifier = '2015/03/30/Rock-your-Mac/';
-      var disqus_url = 'http://saintdan.github.io/2015/03/30/Rock-your-Mac/';
+      var disqus_identifier = '2015/03/30/Set-Up-Development–Environment–On-a-New-Mac/';
+      var disqus_url = 'http://saintdan.github.io/2015/03/30/Set-Up-Development–Environment–On-a-New-Mac/';
 
       (function(){
         var dsq = document.createElement('script');
