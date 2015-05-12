@@ -12,6 +12,8 @@ This is a tutorial to help you to publish your jar file to Maven Central with Gr
 - Create a JIRA ticket.
 - Your own gpg key.
 
+<!-- more -->
+
 ##Register your project at Sonatype
 After sighing up and creating your own account, click the Create button to create a new issue. Choose the options like this:
 
@@ -101,8 +103,6 @@ I used [Chris Banes](https://plus.google.com/+ChrisBanes/posts?partnerid=ogpy0)'
 
 ###Create project root maven-push.gradle
 You can download my [gradle_mvn_push_for_jar](https://github.com/saintdan/gradle_mvn_push_for_jar) or copy following with no modification:
-
-<!-- more -->
 
 ```
 apply plugin: 'java'

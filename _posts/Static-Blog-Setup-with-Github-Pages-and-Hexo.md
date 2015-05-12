@@ -23,6 +23,8 @@ In this tutorial you will set up a static blog with Github pages and Hexo.
 
 In my view, great content is the soul of blog. So I choose a simple way like Hexo to set up my blog, and share my experience with you.
 
+<!-- more -->
+
 ##Start to set up your blog
 
 ###Install [Git](http://git-scm.com/) and [Node.js](https://nodejs.org/)
@@ -61,8 +63,6 @@ $ hexo server
 ```
 
 See the effect in your browser with the url of **'localhost:4000'**
-
-<!-- more -->
 
 ###Deploy GitHub Pages
 
