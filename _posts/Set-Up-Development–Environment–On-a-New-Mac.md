@@ -226,6 +226,20 @@ Create a file named **'shadowsocks.json'** in **/etc/**.
 }
 ```
 
+After that, you can use 
+
+```
+​ssserver -c /etc/shadowsocks.json -d start
+```
+
+to start the shadowsocks server, or use
+
+```
+​ssserver -c /etc/shadowsocks.json -d stop
+```
+
+to stop it.
+
 ### Usage
 
 **Shadowsocksx Icon -> Servers -> Open Server Preference**
@@ -513,10 +527,10 @@ Create some directories to store our projects and virtual environments:
 $ sudo mkdir -p <your_projects_path>/<your_virtual_environments>
 ```
 
-We’ll then open the **'~/.bashrc'** file (which may be created if it doesn’t exist yet):
+We’ll then open the **'~/.zshrc'** file (which may be created if it doesn’t exist yet):
 
 ```
-$ mvim ~/.bashrc
+$ mvim ~/.zshrc
 ```
 
 and add:
@@ -541,7 +555,7 @@ gpip3(){
 Reload the bash environment:
 
 ```
-$ source ~/.bash_profile
+$ source ~/.zshrc
 ```
 
 Now, we can just use pip/pip3 to install <package> in virtual environment, and use gpip/gpip3 to install global package.
@@ -655,7 +669,7 @@ Download jdk from [Oracle](http://www.oracle.com/technetwork/java/javase/downloa
 
 If you have more than one jdk.
 
-You can add following in your **'bash_profile'**:
+You can add following in your **'~/.zshrc'**:
 
 ```
 export JAVA_6_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home  
@@ -670,6 +684,8 @@ $ alias jdk8='export JAVA_HOME=$JAVA_8_HOME'
 $ alias jdk7='export JAVA_HOME=$JAVA_7_HOME' 
 $ alias jdk6='export JAVA_HOME=$JAVA_6_HOME'
 ```
+
+Don't foget to **source the ~/.zshrc**
 
 Now, you can configure your jdk version with command jdk6, jdk7, jdk8 in terminal.
 
