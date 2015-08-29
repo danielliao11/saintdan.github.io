@@ -43,8 +43,7 @@ Add
 $ source ~/usr/local/Cellar/x.x.x/nvm.sh
 ```
 
-to the `.bashrc` or `.bash_profile` or `.zshrc` etc.
-
+to the `.bashrc` or `.bash_profile` or `.zshrc` etc.  
 You can use
 
 ```
@@ -54,8 +53,29 @@ $ nvm ls-remote
 to list all the versions of node or io.
 
 ```
-$ nvm install <node's version like 0.12.7>
+$ nvm install <node's version like v0.12.7>
 ```
+
+Use
+
+```
+$ nvm ls
+```
+
+to list all your versions of node or iojs.  
+And you can use
+
+```
+$ nvm use <node's version like 0.12.7>
+```
+
+to choose the version. If you are lazy like me. :P
+
+```
+$ nvm use 0.12
+```
+
+So easy!
 
 If you are in the GFW, you can use `--registry` param to change your nvm and npm source. For Chinese, you can use [taobao](http://registry.npm.taobao.org):
 
