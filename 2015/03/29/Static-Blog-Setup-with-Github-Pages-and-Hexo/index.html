@@ -175,11 +175,17 @@
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>brew update  </span><br><span class="line"><span class="variable">$ </span>brew install git  </span><br><span class="line"><span class="variable">$ </span>brew install nvm</span><br></pre></td></tr></table></figure>
 <p>Add</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>source ~<span class="regexp">/usr/local</span><span class="regexp">/Cellar/x</span>.x.x/nvm.sh</span><br></pre></td></tr></table></figure>
-<p>to the <code>.bashrc</code> or <code>.bash_profile</code> or <code>.zshrc</code> etc.</p>
-<p>You can use</p>
+<p>to the <code>.bashrc</code> or <code>.bash_profile</code> or <code>.zshrc</code> etc.<br>You can use</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>nvm ls-remote</span><br></pre></td></tr></table></figure>
 <p>to list all the versions of node or io.</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install &lt;node's <span class="property">version</span> like <span class="number">0.12</span><span class="number">.7</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install &lt;node's <span class="property">version</span> like v0<span class="number">.12</span><span class="number">.7</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Use</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>nvm ls</span><br></pre></td></tr></table></figure>
+<p>to list all your versions of node or iojs.<br>And you can use</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>nvm <span class="keyword">use</span> &lt;node<span class="string">'s version like 0.12.7&gt;</span></span><br></pre></td></tr></table></figure>
+<p>to choose the version. If you are lazy like me. :P</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>nvm <span class="keyword">use</span> <span class="number">0</span>.<span class="number">12</span></span><br></pre></td></tr></table></figure>
+<p>So easy!</p>
 <p>If you are in the GFW, you can use <code>--registry</code> param to change your nvm and npm source. For Chinese, you can use <a href="http://registry.npm.taobao.org" target="_blank" rel="external">taobao</a>:</p>
 <figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install koa --<span class="keyword">registry</span>=<span class="keyword">http</span>://<span class="keyword">registry</span>.npm.taobao.org</span><br></pre></td></tr></table></figure>
 <p>Or you can also install cnpm cli:</p>
