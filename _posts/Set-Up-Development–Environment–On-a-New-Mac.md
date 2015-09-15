@@ -7,8 +7,6 @@ tags: [tutorial]
 
 In this tutorial you will set up the development environment on a new Macbook for some major languages like [Python](https://www.python.org/), [Ruby](https://www.ruby-lang.org/en/), [Java](http://www.oracle.com/technetwork/java/index.html) and [Node](https://nodejs.org/) environments. Even if you don't program in all four, it is good to have them as many command-line tools use one of them.
 
-<!-- more -->
-
 # System Update
 
 First of all, update your system. For that: **Apple Icon -> About This Mac -> Software Update**
@@ -55,7 +53,7 @@ Finally, we can install Homebrew.
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Add **'/usr/local/bin'** to your **$PATH** environment variable:
+Add `/usr/local/bin` to your **$PATH** environment variable:
 
 ```
 $ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
@@ -66,6 +64,8 @@ Run the following command to make sure everything works:
 ```
 $ brew doctor
 ```
+
+<!-- more -->
 
 ## Usage
 
@@ -211,7 +211,7 @@ pip install shadowsocks
 
 #### Configure Shadowsocks
 
-Create a file named **'shadowsocks.json'** in **/etc/**.
+Create a file named `shadowsocks.json` in `/etc/`.
 
 ```
 {
@@ -266,7 +266,7 @@ $ brew install proxychains-ng
 
 ### Configuration
 
-Edit the **'proxychains.conf'**:
+Edit the `proxychains.conf`:
 
 ```
 $ mvim /usr/local/etc/proxychains.conf
@@ -278,7 +278,7 @@ Add the proxy ip to **[ProxyList]**:
 socks5  127.0.0.1 1080
 ```
 
-And turn on the **'dynamic_chain'**.
+And turn on the `dynamic_chain`.
 
 ### Usage
 
@@ -376,7 +376,7 @@ Open the Preference.
 $ cat /etc/shells
 ```
 
-If you don't have zsh, please go to **Install zsh**. Otherwise, you can skip to **Step 3
+If you don't have zsh, please go to **Install zsh**. Otherwise, you can skip to **Step 3**
 
 ### Step 2: Install Zsh
 
@@ -433,9 +433,9 @@ Test with:
 $ which python
 ```
 
-and the terminal should output **'/usr/local/bin/python'**. If output **'/usr/bin/python'**, please:
+and the terminal should output `/usr/local/bin/python`. If output `/usr/bin/python`, please:
 
-Edit **'.bash_profile'**:
+Edit `.bash_profile` or `.zshrc`:
 
 ```
 #path
@@ -465,15 +465,12 @@ and the terminal should output **'/usr/local/bin/python'**.
 
 ```
 $ brew install python3
-```
 
-Test it with:
-
-```
+# Test it with:
 $ which python3
 ```
 
-and the terminal should output **'/usr/local/bin/python3'**.
+and the terminal should output `/usr/local/bin/python3`.
 
 ## Pip
 
@@ -484,29 +481,17 @@ Upgrade [Pip](https://pypi.python.org/pypi/pip) and [Setuptools](https://pypi.py
 # Python uses pip while Python3 uses pip3.
 $ sudo pip install --upgrade setuptools
 $ sudo pip install --upgrade pip
-```
 
-To intall a python package:
-
-```
+# To intall a python package:
 $ sudo pip install <package_name>
-```
 
-To upgrade a package:
-
-```
+# To upgrade a package:
 $ sudo pip install --upgrade <package_name>
-```
 
-To see what's installed:
-
-```
+# To see what's installed:
 $ pip freeze
-```
 
-To uninstall a package:
-
-```
+# To uninstall a package:
 $ sudo pip uninstall <package_name>
 ```
 
@@ -527,7 +512,7 @@ Create some directories to store our projects and virtual environments:
 $ sudo mkdir -p <your_projects_path>/<your_virtual_environments>
 ```
 
-We’ll then open the **'~/.zshrc'** file (which may be created if it doesn’t exist yet):
+We’ll then open the `~/.zshrc` file (which may be created if it doesn’t exist yet):
 
 ```
 $ mvim ~/.zshrc
@@ -575,7 +560,7 @@ If you have both Python 2.x and 3.x and want to create a Python 3.x virtualenv:
 $ sudo virtualenv-3.x <your_venv_name>
 ```
 
-**NOTICE**: Remember to add **'your_venv_name'** to your project's **'.gitignore'** file so you don't include all of that in your source code!
+**NOTICE**: Remember to add **'your_venv_name'** to your project's `.gitignore` file so you don't include all of that in your source code!
 
 ##Numpy, Scipy and Matplotlib
 
@@ -631,15 +616,26 @@ We're going to use [rbenv](https://github.com/sstephenson/rbenv) to install and 
 Run the following commands in your Terminal:
 
 ```
-$ brew install rbenv ruby-build rbenv-gem-rehash rbenv-default-gems
+$ brew install rbenv ruby-build rbenv-gem-rehash
 
 # Add rbenv to bash so that it loads every time you open a terminal
-$ echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
-$ source ~/.bash_profile
+$ echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.zshrc
+$ source ~/.zshrc
 
 # Install Ruby
-$ rbenv install 2.2.x
-$ rbenv global 2.2.x
+# To show all versions of ruby:
+$ rbenv install -l
+
+# Choose the version you want like:
+$ rbenv install x.x.x
+# Remeber rehash it because we installed the rbenv-gem-rehash.
+$ rbenv rehash
+
+# Set global version like:
+$ rbenv global x.x.x
+
+# Set local version like:
+$ rbenv local x.x.x
 $ rbenv versions
 ```
 
@@ -669,7 +665,7 @@ Download jdk from [Oracle](http://www.oracle.com/technetwork/java/javase/downloa
 
 If you have more than one jdk.
 
-You can add following in your **'~/.zshrc'**:
+You can add following in your `~/.zshrc`:
 
 ```
 export JAVA_6_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home  
@@ -685,7 +681,7 @@ $ alias jdk7='export JAVA_HOME=$JAVA_7_HOME'
 $ alias jdk6='export JAVA_HOME=$JAVA_6_HOME'
 ```
 
-Don't foget to **source the ~/.zshrc**
+Don't foget to `$ source the ~/.zshrc`
 
 Now, you can configure your jdk version with command jdk6, jdk7, jdk8 in terminal.
 

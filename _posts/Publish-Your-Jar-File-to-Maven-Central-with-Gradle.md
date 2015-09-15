@@ -12,8 +12,6 @@ This is a tutorial to help you to publish your jar file to Maven Central with Gr
 - Create a JIRA ticket.
 - Your own gpg key.
 
-<!-- more -->
-
 ##Register your project at Sonatype
 After sighing up and creating your own account, click the Create button to create a new issue. Choose the options like this:
 
@@ -25,7 +23,9 @@ After sighing up and creating your own account, click the Create button to creat
 - When you create your project, pay more attenton to **groupId**. It is very important.  
 **If you don't own a domain, you can choose a groupId like "com.github.your_account" which reflects your project host.** 
 - You can't use your JIRA ticket immediately.Sonatype have to prepare repository and normally it takes 1-2 business days.
-   
+
+<!-- more -->
+
 ##Generate your own gpg key
 Before you publish your **release** version of jar file, you need to sign it with GnuPG.
 
